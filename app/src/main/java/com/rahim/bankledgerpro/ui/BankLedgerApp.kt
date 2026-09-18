@@ -41,7 +41,7 @@ fun BankLedgerApp(vm: AppViewModel, restored: Boolean) {
             TransactionDialog(
                 initial = pending,
                 onSave = { d ->
-                    vm.add(pending.amount, pending.type, pending.bank, d, pending.balanceAfter, pending.rawSms)
+                    vm.add(pending.amount, pending.type, pending.bank, d.description, pending.balanceAfter, pending.rawSms)
                     vm.consumePending()
                 },
                 onDismiss = { vm.consumePending() }
