@@ -57,7 +57,18 @@ fun BankLedgerApp(vm: AppViewModel, restored: Boolean) {
         edit?.let { item ->
             TransactionDialog(
                 initial = item,
-                onSave = { d -> vm.update(d.copy(id = item.id, timestamp = item.timestamp)); edit = null },
+                onSave = { d ->
+                    vm.update(
+                        item.copy(
+                            amount = d.amount,
+                            type = d.type,
+                            bank = d.bank,
+                            description = d.description,
+                            balanceAfter = d.balanceAfter
+                        )
+                    )
+                    edit = null
+                },
                 onDismiss = { edit = null }
             )
         }
